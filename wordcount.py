@@ -48,16 +48,18 @@ import sys
 ###
 
 def word_dictionary(filename) :
-    file = open("filename","r")
+    file = open(filename,"r")
     counter_dict = {}
-    strings = file.split()
 
-    for i in strings :
-        word = i.lower()
-        if word not in counter_dict :
-            counter_dict[word]=1
-        else :
+    for y in file :
+        strings = y.split()
+
+        for i in strings :
+            word = i.lower()
+        if word in counter_dict :
             counter_dict[word]+=1
+        else :
+            counter_dict[word]=1
     return counter_dict
 
 def print_words(filename) :
@@ -65,11 +67,11 @@ def print_words(filename) :
     for i in sorted(words.keys()):
         print(i, words[i])
 
-def print_words(filename) :
+def print_top(filename) :
     words = word_dictionary(filename)
     sorted_words = sorted(words.items(), key = lambda x : x[1], reverse=True)
-    for i in sorted_words[:20] :
-        print(i[0], i[1])
+    for w in sorted_words[:20] :
+        print(w[0], w[1])
 
 
 
